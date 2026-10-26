@@ -137,6 +137,11 @@ proc adi_project {project_name {mode 0} {parameter_list {}} } {
     set device "xck26-sfvc784-2LVI-i"
     set board [lindex [lsearch -all -inline [get_board_parts] *k26*] end]
   }
+  if [regexp "_zcu104" $project_name] {
+  set device "xczu7ev-ffvc1156-2-e"
+  set board [lindex [lsearch -all -inline [get_board_parts] *zcu104*] end]
+  set sys_zynq 2
+  }
 
   adi_project_create $project_name $mode $parameter_list $device $board
 }
