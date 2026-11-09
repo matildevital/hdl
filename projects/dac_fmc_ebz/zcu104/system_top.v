@@ -111,7 +111,7 @@ module system_top #(
   // If you are planning to build a bitstream for just one of those boards you
   // can hardwire the logic level here.
   //
-  assign spi_en = (DEVICE_CODE <= 2);
+  assign spi_en = 1'b0;
 
   //                                        9135/9144/9172
   assign spi_csn_dac  = spi0_csn[1];
@@ -175,6 +175,8 @@ module system_top #(
   assign gpio_i[94:52] = gpio_o[94:52];
   assign gpio_i[47:32] = gpio_o[47:32];
   assign gpio_i[31:26] = gpio_o[31:26];
+  assign gpio_i[25]    = gpio_o[25];      /* unused, was left undriven */
+  assign gpio_i[20:16] = gpio_o[20:16];   /* unused, was left undriven */
   assign gpio_i[ 7: 0] = gpio_o[7:0];
 
   system_wrapper i_system_wrapper (

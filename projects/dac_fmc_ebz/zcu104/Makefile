@@ -4,13 +4,13 @@
 ## Auto-generated, do not modify!
 ####################################################################################
 
-PROJECT_NAME := dac_fmc_ebz_zcu102
+PROJECT_NAME := dac_fmc_ebz_zcu104
 
 M_DEPS += ../common/dac_fmc_ebz_bd.tcl
 M_DEPS += ../common/config.tcl
 M_DEPS += ../../scripts/adi_pd.tcl
-M_DEPS += ../../common/zcu102/zcu102_system_constr.xdc
-M_DEPS += ../../common/zcu102/zcu102_system_bd.tcl
+M_DEPS += ../../common/zcu104/zcu104_system_constr.xdc
+M_DEPS += ../../common/zcu104/zcu104_system_bd.tcl
 M_DEPS += ../../common/xilinx/data_offload_bd.tcl
 M_DEPS += ../../../library/util_hbm/scripts/adi_util_hbm.tcl
 M_DEPS += ../../../library/jesd204/scripts/jesd204.tcl

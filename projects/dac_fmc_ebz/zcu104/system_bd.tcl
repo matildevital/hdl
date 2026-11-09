@@ -14,17 +14,22 @@ source $ad_hdl_dir/projects/scripts/adi_pd.tcl
 
 set ADI_DEVICE_CODE $ad_project_params(DEVICE_CODE)
 
+## GT settings for: REFCLK = 200 MHz, lane rate = 8 Gbps, QPLL0
+##   VCO = 200 MHz * FBDIV(80) / REFCLK_DIV(1) = 16 GHz   (QPLL0 legal range 9.8-16.375 GHz)
+##   Lane rate = VCO / TX_OUT_DIV(2) = 8 Gbps
+##   TX_CLK25_DIV = REFCLK / 25 MHz = 8
+## (the old 40 / 1 / 15 values matched a 375 MHz REFCLK, not your 200 MHz)
 ad_ip_parameter util_dac_jesd204_xcvr CONFIG.QPLL_REFCLK_DIV 1
 ad_ip_parameter util_dac_jesd204_xcvr CONFIG.QPLL_CFG2       0xFC0
 ad_ip_parameter util_dac_jesd204_xcvr CONFIG.QPLL_CFG3       0x120
 ad_ip_parameter util_dac_jesd204_xcvr CONFIG.QPLL_CFG0       0x333C
-ad_ip_parameter util_dac_jesd204_xcvr CONFIG.QPLL_FBDIV      40
+ad_ip_parameter util_dac_jesd204_xcvr CONFIG.QPLL_FBDIV      80
 ad_ip_parameter util_dac_jesd204_xcvr CONFIG.QPLL_CFG4       0x45
 ad_ip_parameter util_dac_jesd204_xcvr CONFIG.QPLL_CFG1       0xD038
 ad_ip_parameter util_dac_jesd204_xcvr CONFIG.QPLL_CFG1_G3    0xD038
 ad_ip_parameter util_dac_jesd204_xcvr CONFIG.QPLL_CFG2_G3    0xFC0
-ad_ip_parameter util_dac_jesd204_xcvr CONFIG.TX_CLK25_DIV    15
-ad_ip_parameter util_dac_jesd204_xcvr CONFIG.TX_OUT_DIV      1
+ad_ip_parameter util_dac_jesd204_xcvr CONFIG.TX_CLK25_DIV    8
+ad_ip_parameter util_dac_jesd204_xcvr CONFIG.TX_OUT_DIV      2
 ad_ip_parameter util_dac_jesd204_xcvr CONFIG.TXPI_CFG        0x0
 ad_ip_parameter util_dac_jesd204_xcvr CONFIG.A_TXDIFFCTRL    0xC
 ad_ip_parameter util_dac_jesd204_xcvr CONFIG.TX_PI_BIASSET   3
